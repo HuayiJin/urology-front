@@ -79,7 +79,9 @@ App({
             that.registerUser(cb);
           }
           else {
-            that.globalData.userInfo = res.data;
+            //that.globalData.userInfo = res.data;
+            that.globalData.userInfo.name = res.data.name;
+            that.globalData.userInfo.avatar = res.data.avatar;
             wx.hideLoading();
             cb();
           }
@@ -105,7 +107,9 @@ App({
           method: 'post',
           data: userInfo,
           success: function (res) {
-            that.globalData.userInfo = userInfo;
+            //that.globalData.userInfo = userInfo;
+            that.globalData.userInfo.name = userInfo.name;
+            that.globalData.userInfo.avatar = userInfo.avatar;
             cb();
             wx.hideLoading();
           }
@@ -113,10 +117,15 @@ App({
       },
       //授权失败，用默认值注册
       fail: function() {
+        var userInfo = {
+          name: that.globalData.userInfo.name,
+          avatar: that.globalData.userInfo.avatar
+        };
         that.request({
           url: '/user',
           method: 'post',
-          data: that.globalData.userInfo,
+          //data: that.globalData.userInfo,
+          data: userInfo,
           success: function () {
             cb();
             wx.hideLoading();
@@ -157,7 +166,11 @@ App({
     //默认值
     userInfo: {
       name: 'todo新手2',
-      avatar: 'https://yunlaiwu0.cn-bj.ufileos.com/teacher_avatar.png'
+      avatar: 'https://yunlaiwu0.cn-bj.ufileos.com/teacher_avatar.png',
+      realname: '',
+      phone: '',
+      flagRealnameInputted: false,
+      flagPhoneInputted: false
     }
   }
 })

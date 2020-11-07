@@ -17,7 +17,7 @@
   font-size: 40rpx;
   margin: 10rpx 0 60rpx;
 }
-
+/*
 .item {
   display: flex;
   color: #9B9B9B;
@@ -32,4 +32,33 @@
 
 .item text:last-child {
   width: 50rpx;
+}
+*/
+.section {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #DDD;
+  color: #9B9B9B;
+  font-size: 30rpx;
+  align-items: center;
+}
+
+.section text {
+  flex: 1;
+}
+
+.section input {
+  width: 400rpx;
+  text-align: right;
+}
+
+.tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 30rpx;
+  margin: 50rpx 50rpx 50rpx;
+  color: #9B9B9B;
 }

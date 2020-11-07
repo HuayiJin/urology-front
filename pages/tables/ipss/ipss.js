@@ -153,6 +153,8 @@ Page({
   //提交
   onSubmit: function() {
     //console.log(this.data.index1);
+    console.log('用户姓名为：', getApp().globalData.userInfo.realname);
+    console.log('用户手机号为：', getApp().globalData.userInfo.phone);
     if(!this.data.index1 || !this.data.index2 || !this.data.index3 || !this.data.index4 && !this.data.index5 && !this.data.index6 || !this.data.index7 || !this.data.index8) {
       wx.showToast({title: '请完整填写表单~', icon: 'none'});
       return;
@@ -161,6 +163,7 @@ Page({
       title: '正在提交表单……',
       mask: true
     });
+    /*
     var ipss = {
       ipss1: this.data.index1,
       ipss2: this.data.index2,
@@ -170,6 +173,13 @@ Page({
       ipss6: this.data.index6,
       ipss7: this.data.index7,
       qol: this.data.index8
+    };
+    */
+    var ipss = {
+      name: getApp().globalData.userInfo.realname,
+      phone: getApp().globalData.userInfo.phone,
+      score: [this.data.index1, this.data.index2, this.data.index3, this.data.index4,
+              this.data.index5, this.data.index6, this.data.index7, this.data.index8]
     };
     getApp().request({
       url: '/ipss',
