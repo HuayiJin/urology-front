@@ -4,6 +4,7 @@
     <image src="{{ avatar }}" />
   </view>
   <view class="name">{{ name }}</view>
+  <!--
   <view class="item" data-target="user" bindtap="navTo">
     <text>个人信息</text>
     <text>→</text>
@@ -12,4 +13,17 @@
     <text>设置</text>
     <text>→</text>
   </view>
+  -->
+</view>
+
+<view class="container">
+  <view class="section">
+    <text>姓名</text>
+    <input class = "weui-input" type = "text" value="{{ realname }}" bindblur = "changeRealName" auto-focus placeholder-style = "color:#F76260" placeholder = "请输入姓名" />
+  </view>
+  <view class="section">
+    <text>手机号</text>
+    <input class = "weui-input" type = "text" value="{{ phone }}" bindblur = "changePhone" auto-focus placeholder-style="color:#F76260" placeholder = "请输入手机号" />
+  </view>
+  <text class="tip">填表之前请先完善基本信息~</text>
 </view>
