@@ -11,6 +11,11 @@ Page({
     this.setData(getApp().globalData.userInfo);
   },
 
+  onLoad: function() {
+    console.info('loading me...');
+    getApp().checkLogin(function(){});
+  },
+
   changeRealName: function(e) {
     var realname = e.detail.value.trim();
     var nameReg = /^[\u4E00-\u9FA5]{2,4}$/;
