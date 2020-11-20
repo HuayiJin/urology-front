@@ -29,18 +29,6 @@
         "selectedIconPath": "assets/todo-active.png"
       },
       {
-        "pagePath": "pages/index/index",
-        "text": "待办",
-        "iconPath": "assets/todo.png",
-        "selectedIconPath": "assets/todo-active.png"
-      },
-      {
-        "pagePath": "pages/history/history",
-        "text": "历史",
-        "iconPath": "assets/history.png",
-        "selectedIconPath": "assets/history-active.png"
-      },
-      {
         "pagePath": "pages/me/me",
         "text": "我",
         "iconPath": "assets/me.png",

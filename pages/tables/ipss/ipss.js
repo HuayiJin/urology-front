@@ -187,21 +187,25 @@ Page({
       data: ipss,
       success: function() {
         wx.hideLoading();
-        wx.navigateBack();
         wx.showToast({
           title: '提交成功',
           icon: 'success',
           duration: 2000
         });
+        setTimeout (() => { 
+          wx.navigateBack() 
+        } ,  2000 );
       },
       fail: function() {
         wx.hideLoading();
-        wx.navigateBack();
         wx.showToast({
           title: '提交失败',
           icon: 'none',
           duration: 2000
         });
+        setTimeout (() => { 
+          wx.navigateBack() 
+        } ,  2000 );
       }
     });
   },

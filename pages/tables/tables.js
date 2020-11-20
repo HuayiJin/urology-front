@@ -6,13 +6,15 @@ Page({
    */
   data: {
     selfTableList: [{
-        name: "IPSS自测表",
+        name: "前列自测表",
         id: "ipss"
       },
+      /*
       {
         name: "IPSS测试用",
         id: "ipss_test"
       }
+      */
     ]
   },
 
