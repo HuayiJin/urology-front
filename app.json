@@ -8,7 +8,9 @@
     "pages/setting/setting",
     "pages/tables/tables",
     "pages/tables/ipss/ipss",
-    "pages/tables/ipss_test/ipss_test"
+    "pages/tables/ipss_test/ipss_test",
+    "pages/tablehistory/tablehistory",
+    "pages/tablehistory/tablehistorydetail/tablehistorydetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,6 +29,12 @@
         "text": "自测表",
         "iconPath": "assets/todo.png",
         "selectedIconPath": "assets/todo-active.png"
+      },
+      {
+        "pagePath": "pages/tablehistory/tablehistory",
+        "text": "表单历史",
+        "iconPath": "assets/history.png",
+        "selectedIconPath": "assets/history-active.png"
       },
       {
         "pagePath": "pages/me/me",
