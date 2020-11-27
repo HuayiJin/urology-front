@@ -1,0 +1,16 @@
+<!--pages/tablehistory/tablehistorydetail/tablehistorydetail.wxml-->
+<view class="item-box">
+  <view class="items">
+    <view wx:for="{{list}}"  wx:key="{{index}}"  class="item">
+      <view  data-index="{{index}}" class="inner txt">
+      <span class="item-data-left">
+        {{item.ques}}
+      </span>
+      <span class="item-data-right">
+       <i class="anspace"> {{item.ans}}</i>
+      </span>
+      </view>
+    </view>
+  </view>
+  <text class="time">表单{{id + 1}} {{create_date}}</text>
+</view>

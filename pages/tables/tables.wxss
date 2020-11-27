@@ -10,3 +10,6 @@ button {
   font-size: 40rpx;
   margin-top: 30rpx;
 }
+button::after {
+  border: solid;
+}
