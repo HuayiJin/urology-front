@@ -69,6 +69,7 @@ App({
     this.request({
       url: '/user',
       success: function (res) {
+        console.info('try to get user info, res.statusCode is', res.statusCode);
         // 未登录
         if (res.statusCode === 401) {
           that.login(cb);
@@ -79,9 +80,12 @@ App({
             that.registerUser(cb);
           }
           else {
-            //that.globalData.userInfo = res.data;
+            //已登录已注册用户
             that.globalData.userInfo.name = res.data.name;
             that.globalData.userInfo.avatar = res.data.avatar;
+            //user的get请求(获取用户)新增回传realname和phone后，取消下面两行注释
+            //that.globalData.userInfo.realname = res.data.realname;
+            //that.globalData.userInfo.phone = res.data.phone;
             wx.hideLoading();
             cb();
           }
@@ -107,7 +111,6 @@ App({
           method: 'post',
           data: userInfo,
           success: function (res) {
-            //that.globalData.userInfo = userInfo;
             that.globalData.userInfo.name = userInfo.name;
             that.globalData.userInfo.avatar = userInfo.avatar;
             cb();
@@ -124,7 +127,6 @@ App({
         that.request({
           url: '/user',
           method: 'post',
-          //data: that.globalData.userInfo,
           data: userInfo,
           success: function () {
             cb();
@@ -165,7 +167,7 @@ App({
   globalData: {
     //默认值
     userInfo: {
-      name: 'todo新手2',
+      name: '匿名用户',
       avatar: 'https://yunlaiwu0.cn-bj.ufileos.com/teacher_avatar.png',
       realname: '',
       phone: '',

@@ -64,3 +64,12 @@
   margin: 50rpx 50rpx 50rpx;
   color: #9B9B9B;
 }
+
+button{
+  margin:30px auto 0;
+}
+.result{
+  width:200px;
+  margin:20px auto;
+  text-align: center;
+}
