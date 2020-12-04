@@ -19,6 +19,15 @@ Page({
   },
 
   f_ipss: function (e) {
+    /*
+    if(getApp().globalData.userInfo.realname == '' || getApp().globalData.userInfo.phone == '') {
+      wx.switchTab({
+        url: '/pages/me/me'
+      })
+      wx.showToast({title: '请先完善基本信息~', icon: 'none', duration: 2000});
+      return;
+    }
+    */
     if(!getApp().globalData.userInfo.flagRealnameInputted || !getApp().globalData.userInfo.flagPhoneInputted) {
       wx.switchTab({
         url: '/pages/me/me'

@@ -40,11 +40,12 @@ Page({
   load: function() {
 
     var that = this;
-
+    
     wx.showLoading({
       title: '加载历史数据',
       mask: true
     });
+    console.log(getApp().globalData.userInfo.phone);
     
     getApp().request({
       url: '/ipss/history',
@@ -53,6 +54,8 @@ Page({
       success: function (res) {
         wx.hideLoading();
 
+        console.log(res);
+        
         if(res.statusCode !== 200) {
           wx.showToast({
             icon : 'none',
@@ -61,12 +64,42 @@ Page({
           return;
         }
 
-        console.log("post ipss data success fully");
-        
+        //测试用
+        /*
+        that.setData({
+          history : [
+            {"create_date":"2020-11-09T06:06:30.000Z","ipss1":0,"ipss2":1,"ipss3":2,"ipss4":3,"ipss5":4,"ipss6":5,"ipss7":0,"qol":1},
+            {"create_date":"2020-11-09T06:15:09.000Z","ipss1":5,"ipss2":4,"ipss3":3,"ipss4":4,"ipss5":5,"ipss6":0,"ipss7":1,"qol":2},
+            {"create_date":"2020-11-13T06:56:23.000Z","ipss1":4,"ipss2":3,"ipss3":4,"ipss4":5,"ipss5":0,"ipss6":1,"ipss7":2,"qol":3},
+            {"create_date":"2020-11-20T08:05:09.000Z","ipss1":3,"ipss2":4,"ipss3":5,"ipss4":0,"ipss5":1,"ipss6":2,"ipss7":3,"qol":4}
+          ]
+        });
+        console.log("history.length：" + this.data.history.length);
+        */
+
         that.setData({
           history : res.data
         });
-        console.log("history.length：" + this.data.history.length);
+        console.log("history.length：" + that.data.history.length);
+
+        var history = that.data.history;
+        var dates = [];
+        var groupedHistory = history.map(function (item, index) {
+          item.pos = index;
+          return item;
+        }).reverse().reduce(function (prev, cur) {
+          if (!prev[cur.create_date]) {
+            prev[cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19))] = [];
+            dates.push(cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19)));
+          }
+          prev[cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19))].push(cur);
+          return prev;
+        }, {});
+
+        that.setData({
+          groupedHistory: groupedHistory,
+          dates: dates
+        });
       },
       fail: function() {
         wx.hideLoading();
@@ -75,38 +108,6 @@ Page({
           title: '请求出错'
         });
       }
-    });
-
-    //测试用
-    /*
-    that.setData({
-      history : [
-        {"create_date":"2020-11-09T06:06:30.000Z","ipss1":0,"ipss2":1,"ipss3":2,"ipss4":3,"ipss5":4,"ipss6":5,"ipss7":0,"qol":1},
-        {"create_date":"2020-11-09T06:15:09.000Z","ipss1":5,"ipss2":4,"ipss3":3,"ipss4":4,"ipss5":5,"ipss6":0,"ipss7":1,"qol":2},
-        {"create_date":"2020-11-13T06:56:23.000Z","ipss1":4,"ipss2":3,"ipss3":4,"ipss4":5,"ipss5":0,"ipss6":1,"ipss7":2,"qol":3},
-        {"create_date":"2020-11-20T08:05:09.000Z","ipss1":3,"ipss2":4,"ipss3":5,"ipss4":0,"ipss5":1,"ipss6":2,"ipss7":3,"qol":4}
-      ]
-    });
-    console.log("history.length：" + this.data.history.length);
-    */
-    
-    var history = this.data.history;
-    var dates = [];
-    var groupedHistory = history.map(function (item, index) {
-      item.pos = index;
-      return item;
-    }).reverse().reduce(function (prev, cur) {
-      if (!prev[cur.create_date]) {
-        prev[cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19))] = [];
-        dates.push(cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19)));
-      }
-      prev[cur.create_date.substring(0, 10).concat('  ').concat(cur.create_date.substring(11, 19))].push(cur);
-      return prev;
-    }, {});
-
-    this.setData({
-      groupedHistory: groupedHistory,
-      dates: dates
     });
   },
 

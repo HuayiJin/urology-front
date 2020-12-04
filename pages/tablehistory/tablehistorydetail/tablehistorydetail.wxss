@@ -14,8 +14,10 @@
   position: relative;
   border-top: 2rpx solid rgb(248, 244, 244);
   border-bottom: 2rpx solid rgb(248, 244, 244);
-  height: 106rpx;
-  line-height: 120rpx;
+  /*height: 106rpx;
+  line-height: 120rpx;*/
+  height: 79.5rpx;
+  line-height: 90rpx;
   overflow: hidden;
 }
 
@@ -29,21 +31,36 @@
   text-overflow:ellipsis;
 }
 
-.item-data-left{
-width: 68%;
+.item-data-ques{
+width: 100%;
 display: inline-block;
 background: #eee;
 text-align: left;
 }
 
-.item-data-right{
+.item-data-ans{
  display: inline-block;
- width: 32%;
-  text-align: center;
+ width: 50%;
+ text-align: left;
+ padding-left: 30rpx;
 }
 
+.item-data-point{
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+ }
+
+ .item-data-sum{
+  width: 100%;
+  display: inline-block;
+  background: #eee;
+  text-align: left;
+  padding-left: 225rpx; 
+  }
+
 .anspace{
-color: #fa7e04;
+color: #f73333;
 }
 
 .time {
